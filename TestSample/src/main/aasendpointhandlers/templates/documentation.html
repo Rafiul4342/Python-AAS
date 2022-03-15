@@ -1,0 +1,283 @@
+{% extends "homelayout.html" %} {% block homecontent %}
+
+<div class = "container" style="border:1px solid">
+	<div class = "row" style="border-bottom:1px solid;">
+			<div class = "row">
+				<div class="col-6" style = " border-right:1px solid">
+						<div class ="row  d-flex align-items-center justify-content-center">
+							<div class = "col-6   d-flex align-items-center justify-content-center">
+								<h4>Title</h4>
+							</div>
+							<div class = "col-6   d-flex align-items-center justify-content-center">
+								<h4>Document Information</h4>
+							</div>
+						</div>			
+				</div>
+				<div class="col-6">
+						<div class ="row  d-flex align-items-center justify-content-center">
+							<div class = "col-6   d-flex align-items-center justify-content-center">
+								<h4>Title</h4>
+							</div>
+							<div class = "col-6   d-flex align-items-center justify-content-center">
+								<h4>Document Information</h4>
+							</div>
+						</div>			
+				</div>	
+		</div>
+	</div>
+	<div class = "row" style = "height : 2.5vh;">
+			<div class = "row">
+		<div class="col-6" style = "border-right:1px solid">
+		</div>
+		<div class="col-6">
+		</div>
+		</div>
+	</div>	
+{% for documentListPair in documentList %}
+    <div class = "row" >
+    <div  class = "row" style = "">
+      	{% set parent_loop = loop %}
+		{% for documentData in documentListPair %} 
+		{% if loop.index == 1 %}
+		    	<div class="col-6" style = "border-right:1px solid">
+					<div class ="row">
+						<div class = "col-6  d-flex align-items-center justify-content-center">
+							<h4>{{documentData.DocumentVersion.Title.value}}</h4>
+						</div>
+						<div class = "col-6  d-flex align-items-center justify-content-center">
+			    			<input type="image" style="height: 10vh; width : 10vw" 
+							data-bs-toggle="modal" data-bs-target="#documentModal" data-whatever="@mdo" src="http://localhost:9023/images/document.svg" 
+							name="submit" alt ="FE" onclick=ShowDocumentData({{loop.index}},{{parent_loop.index}});>
+						</div>
+					</div>			
+	    	</div>	
+    {% else %}
+			    	<div class="col-6" style = "">
+					<div class ="row">
+						<div class = "col-6  d-flex align-items-center justify-content-center">
+							<h4>{{documentData.DocumentVersion.Title.value}} </h4>
+						</div>
+						<div class = "col-6  d-flex align-items-center justify-content-center">
+			    			<input type="image" style="height: 10vh; width : 10vw" 
+							data-bs-toggle="modal" data-bs-target="#documentModal" data-whatever="@mdo" src="http://localhost:9023/images/document.svg" 
+							name="submit" alt ="FE" onclick=ShowDocumentData({{loop.index}},{{parent_loop.index}});>
+						</div>
+					</div>			
+	    	</div>	
+    {% endif %}   
+
+    	{% endfor %}
+    	</div>
+    </div>
+    <div class="row" style="height : 2.5vh;">
+		<div class="row">
+		<div class="col-6" style="border-right:1px solid">
+		</div>
+		<div class="col-6">
+		</div>
+		</div>
+	</div>
+{% endfor %}
+	
+</div>
+
+<script>
+ 	var documentList = JSON.parse('{{ documentList | tojson }}');
+ 	console.log(documentList);
+</script>
+
+<div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" name="submodel" id="submodelPropertyHeader">New Document</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<input id="submodelNameInnerText" name="submodelName" type="hidden" value="">
+				<input id="submodelPropertyInnerText" name="submodelProperty" type="hidden" value="">
+				<div class="modal-body">
+					<div class="container">
+						<div class = "row">
+							<div class = "col-1">
+							</div>
+							<div class = "col-10">
+								<div class = "row" id = "DocumentIdDomain">
+									<div class = "row" style = "border-bottom-width: 1px;border-bottom-color: black;border-bottom-style: solid;">
+										DocumentIdDomain
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											DocumentDomainId :
+										</div>
+										<div class = "col-6">
+											<p id = "DocumentDomainId"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											DocumentId :
+										</div>
+										<div class = "col-6">
+											<p id = "DocumentId"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											IsPrimary :
+										</div>
+										<div class = "col-6">
+											<p id = "IsPrimary"> </p>
+										</div>			
+									</div>
+								</div>
+								<div class = "row" id = "DocumentClassification"  style = "margin-top:5vh">
+									<div class = "row" style = "border-bottom-width: 1px;border-bottom-color: black;border-bottom-style: solid;">
+										Document Classification
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											ClassificationSystem :
+										</div>
+										<div class = "col-6">
+											<p id = "ClassificationSystem"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											ClassId :
+										</div>
+										<div class = "col-6">
+											<p id = "ClassId"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											ClassName :
+										</div>
+										<div class = "col-6">
+											<p id = "ClassName"> </p>
+										</div>			
+									</div>									
+								</div>
+								<div class = "row" id = "DocumentVersion"   style = "margin-top:5vh">
+									<div class = "row" style = "border-bottom-width: 1px;border-bottom-color: black;border-bottom-style: solid;">
+										Document Version
+									</div>	
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											Language :
+										</div>
+										<div class = "col-6">
+											<p id = "Language"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											DocumentVersionId :
+										</div>
+										<div class = "col-6">
+											<p id = "DocumentVersionId"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											SetDate :
+										</div>
+										<div class = "col-6">
+											<p id = "SetDate"> </p>
+										</div>			
+									</div>	
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											ClassificationSystem :
+										</div>
+										<div class = "col-6">
+											<p id = "ClassificationSystem"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											ClassId :
+										</div>
+										<div class = "col-6">
+											<p id = "ClassId"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											StatusValue :
+										</div>
+										<div class = "col-6">
+											<p id = "StatusValue"> </p>
+										</div>			
+									</div>	
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											OrganizationName :
+										</div>
+										<div class = "col-6">
+											<p id = "OrganizationName"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											OrganizationOfficialName :
+										</div>
+										<div class = "col-6">
+											<p id = "OrganizationOfficialName"> </p>
+										</div>			
+									</div>
+									<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											Title :
+										</div>
+										<div class = "col-6">
+											<p id = "Title"> </p>
+										</div>			
+									</div>		
+																																			<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											SubTitle :
+										</div>
+										<div class = "col-6">
+											<p id = "SubTitle"> </p>
+										</div>			
+									</div>
+							     	<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											Summary :
+										</div>
+										<div class = "col-6">
+											<p id = "Summary"> </p>
+										</div>			
+									</div>
+																		<div class= "row" style = "margin-top : 2.5vh;">
+										<div class = "col-6">
+											DigitalFile : 
+										</div>
+										<div class = "col-6">
+										
+											<p id = "DigitalFile">
+												<form method = "post" action = "documentation/downloadfile"  id ="documentDownload">
+														 <input type="image" id = "io-adaptor-img"  src="http://localhost:9023/images/download.svg" alt="Submit button">
+												</form>
+											</p>
+										</div>			
+									</div>
+								</div>
+							</div>
+							<div class = "col-1">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+						
+				</div>
+			</div>
+		</div>
+</div>
+
+
+{% endblock %}

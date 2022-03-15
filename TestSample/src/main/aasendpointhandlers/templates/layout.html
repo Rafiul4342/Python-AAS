@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>PYAAS</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">		
+		<link rel="stylesheet" href="http://localhost:9023/css/styles.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>	
+		<script  type="text/javascript" src="http://localhost:9023/js/script.js" ></script>
+
+<script type="text/css" >
+</script>
+	</head>
+<body>
+<div class="layoutFrame">
+	<div class="layoutHeader">
+		<div class = "row">
+			<div class = "col-4"><img src = "http://localhost:9023/images/Bild1.png" class="header-img-left">
+			</div>
+			<div class = "col-4">
+				<div class="d-flex justify-content-center">
+					<img src = "http://localhost:9023/images/Bild3.svg" class="header-img-middle" >
+				</div>
+			</div>
+			<div class = "col-4"><img src = "http://localhost:9023/images/Bild2.png" class="header-img-right" >
+			</div>
+		</div>
+    </div>
+		{% block content %}{% endblock %}
+    <div class= "layoutFooter"><h3></h3></div>
+</div>
+<script>
+	{% for message in productionSequenceList %}
+		createProductionStepTags('{{message}}',"{{message}}","1")
+	{% endfor %}
+		function updateFileName(filePath){
+			var documentDiv = document.getElementById("documentDownload");
+			var filename = (filePath["value"]).split("/");
+			console.log(filename,filename[3]);
+			documentDiv.setAttribute("action","/documentation/downloadfile/"+filename[3]);
+		}
+		function ShowDocumentSubdomain(subData,subList)
+		{
+			for (let i = 0; i < subList.length; i++) {
+			var documentDiv = document.getElementById(subList[i]);
+			documentDiv.innerHTML = subData[subList[i]]["value"];
+			
+		}
+		} 
+
+		function ShowDocumentData(childIndex,parentIndex)
+		{
+			console.log(documentList);
+			var childI = childIndex - 1;
+			var parentI = parentIndex - 1;
+			var documentRow = documentList[parentI];
+			var documentData = documentRow[childI];
+			
+			var documentDomain = ["DocumentDomainId","DocumentId","IsPrimary"];
+			var DocumentClassification = ["ClassificationSystem","ClassId","ClassName"];
+			var DocumentVersion = ["Language","DocumentVersionId","SetDate","ClassificationSystem","ClassId","StatusValue","OrganizationName","OrganizationOfficialName","Title","SubTitle","Summary"];
+			
+			ShowDocumentSubdomain(documentData["DocumentIdDomain"],documentDomain);
+			ShowDocumentSubdomain(documentData["DocumentClassification"],DocumentClassification);
+			//ShowDocumentSubdomain(documentData["DocumentVersion"],DocumentVersion);
+			updateFileName(documentData["DocumentVersion"]["DigitalFile"])
+		}
+</script>	 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
+</body>
+</html>
+

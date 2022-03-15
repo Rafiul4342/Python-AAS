@@ -1,0 +1,29 @@
+{% extends "layout.html" %} {% block content %}
+<div class="layoutMenu">
+		<div class="layoutMenuBar">
+			<a href="/home"><img src="http://localhost:9023/images/home.svg" class = "imageHome" alt="Home"></a>
+		</div>
+</div>
+<div class="layoutBody">
+	
+	{% for aasListPair in aasList %}
+    <div class = "row  d-flex align-items-center justify-content-center">
+    	{% set parent_loop = loop %}
+		{% for aasData in aasListPair %}    
+    	<div class="col-6  d-flex align-items-center justify-content-center">
+    		<div style = " vertical-align: top; display: inline-block;text-align: center;align-content:center;">
+    			<a  href= "/home/{{aasData.aasId}}">
+					<img src="http://localhost:9023/images/aas1.svg" class="img-fluid" alt="{{aasData.idShort}}" style = "padding-top: 2.5vh;padding-bottom: 2.5vh; width : 20vw;">
+				</a>
+	    		<span style = "display: block;font-size:large">{{aasData.idShort}}</span>
+			</div>
+    	</div>
+    	{% endfor %}
+    </div>
+    <div class = "row" style = "height : 5vh;">
+    </div>
+{% endfor %}
+	
+</div>
+
+{% endblock %}

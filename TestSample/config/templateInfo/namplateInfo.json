@@ -1,0 +1,11 @@
+{
+	"ManufacturerDetails":{"Property":["ManufacturerName","ManufacturerTypName","CountryOfOrigin"]},
+	"PhysicalAddress" :{"Property":["CountryCode","Street","PostalCode","City","StateCounty"]},
+	"Marking_CE" :   {"File":["File"],
+				      "Property":["CEMarkingPresent"]},
+	"Marking_CRUUS" :{"File":["File"],
+					  "Property":["CRUUSLabelingPresent"]},
+	"Marking_RCM" :  {"File":["File"],
+					  "Property":["RCMLabelingPresent"]},
+	"ProductsDetails":{"Property":["TypClass","SerialNo","ChargeId","City","YearOfConstruction"]}
+}

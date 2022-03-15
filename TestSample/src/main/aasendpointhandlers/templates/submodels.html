@@ -1,0 +1,226 @@
+{% extends "homelayout.html" %} {% block homecontent %}
+
+<div style="width: 100%;">
+	<div class="container">
+		<div class="row">
+			<div class="col-2">
+				<div style="height: 19vh; padding-right: 1vw; padding-right: 1vh; border-radius: 3px; box-shadow: 0 17px 50px 0 rgba(0, 0, 0, .19), 0 12px 15px 0 rgba(0, 0, 0, .24);">
+					<div style = "width : 6vw; padding-left : 2vw; padding-top: 2vh;">
+						<div class="nav flex-column nav-pills me-3" id="v-pills-tab"
+							role="tablist" aria-orientation="vertical">
+							{% for property,property_value in propertyListDict.items()%}
+							 <a	class="nav-link {{property_value['status']}}" id="v-pills-{{property}}-tab"
+								data-bs-toggle="pill" href="#v-pills-{{property}}" role="tab"
+								aria-controls="v-pills-{{property}}" aria-selected="true">{{property}}</a>
+							{% endfor %}
+						</div>				
+					</div>
+				</div>
+
+			</div>
+			<div class = "col-1"></div>
+			<div class = "col-8" style = "padding-bottom : 5vh; border-radius: 3px; box-shadow:0 17px 50px 0 rgba(0,0,0,.19),0 12px 15px 0 rgba(0,0,0,.24);">
+				<div class = "row" style = "height : 6.5vh; background-color :#00b0f0">
+					<div class = "d-flex justify-content-center align-items-center" style = "font-size: 2.5vh;padding-top: 2.0vh;">
+		    			<p style = "color : white; text-transform: uppercase;">
+		    						Properties
+		    			</p>
+	    			</div>
+				</div>
+				<div style = "padding-top : 4vh;">
+					<div class="tab-content" id="v-pills-tabContent">
+					{% for property,property_value in propertyListDict.items()%} 
+					<div class="tab-pane{{property_value['status']}}" id="v-pills-{{property}}"
+						role="tabpanel" aria-labelledby="v-pills-{{property}}-tab">
+						<div >
+							<div class="row">
+								<div class="col-12">
+									<div class="row">
+										<div class="col-12">
+											<div class="row">
+												<div class = "col-8" style= "border-right:solid">
+														<div id = "{{property}}TreeDiv" class = "TreeDivClass" > 
+														</div>
+													</div>
+													<div class = "col-4" >
+														<div id = "{{property}}MOve">
+															<div class="container">
+															<div class="card">
+															  <div class="card-header" style = "background :#00b0f0; color : white;">
+															    Qualifiers
+															  </div>
+															  <div class="card-body" id = "{{property}}QualListDiv">
+	
+															  </div>
+															</div>
+														</div>
+														<div class="container">
+															<div class="card">
+															  <div class="card-header" style = "background :#00b0f0; color : white;">
+															    Semantic Id
+															  </div>
+															  <div class="card-body">
+																  <ul class="list-group list-group-flush"  id = "{{property}}SemanticListDiv">
+																    <li class="list-group-item">First item</li>
+																  </ul>
+															  </div>
+															</div>
+														</div>
+														<div class ="row">
+															<div class = "col-8">
+																<p id= "{{property}}LeafValuep"></p>
+															</div>
+															<div class = "col-4">
+																<div id = "{{property}}leafValueDiv"></div> 
+															</div>
+													</div>
+														</div>
+												</div>
+											</div>	
+										</div>
+									</div>									
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+			</div>				
+
+		</div>	
+	</div>
+</div>
+
+<script>
+ 	var connectstatusDict = JSON.parse('{{ propertyListDict | tojson | safe}}');
+ 	for (const [key, value] of Object.entries(connectstatusDict))
+	 {
+ 		createSubmodelTree(key,connectstatusDict);
+     }
+
+	
+ 	var toggler = document.getElementsByClassName("box");
+ 	var i;
+
+ 	for (i = 0; i < toggler.length; i++) {
+ 	  toggler[i].addEventListener("click", function() {
+ 	    console.log(this.parentElement.querySelector(".nested").classList.toggle("active"));
+ 	    this.classList.toggle("check-box");
+ 	  });
+ 	}
+ 	$('.TreeDivClass .listElement').click(function(){
+ 	    $('.highlight').removeClass('highlight');
+ 		$(this).addClass('highlight');
+
+ 	});
+ 	{% for property,property_value in propertyListDict.items()%}
+	$(window).scroll(function(){
+		  $("#"+"{{property}}"+"MOve").stop().animate({"marginTop": ($(window).scrollTop()) + "px", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
+		});
+	{% endfor %}
+ 	
+</script>
+
+{% for property,property_value in propertyListDict.items()%}
+<div class="modal fade" id="propertyCreation_{{property}}" tabindex="-1"
+	aria-labelledby="propertyLabel_{{property}}" aria-hidden="true">
+	<form action="submodels/property" method="post">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" name="submodel"
+						id="propertyLabel_{{property}}">New {{property}} Property</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<input id="property" name="property" type="hidden"
+					value="{{property}}">
+				<div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-3">
+								<label for="IdShort_Text" class="col-sm-2 col-form-label">IdShort</label>
+							</div>
+							<div class="col-sm-1"></div>
+							<div class="col-sm-6">
+								<input type="text" name="IdShort" class="form-control"
+									id="IdShort_Text">
+							</div>
+							<div class="col-sm-2"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12" style="height: 10px;"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<label for="Value_Text" class="col-sm-2 col-form-label">Value</label>
+							</div>
+							<div class="col-sm-1"></div>
+							<div class="col-sm-6">
+								<input type="text" name="Value" class="form-control"
+									id="Value_Text">
+							</div>
+							<div class="col-sm-1"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12" style="height: 10px;"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<label for="SemanticId_Text" class="col-sm-2 col-form-label">SemanticId</label>
+							</div>
+							<div class="col-sm-1"></div>
+							<div class="col-sm-6">
+								<input type="text" name="SemanticId" class="form-control"
+									id="SemanticId_Text">
+							</div>
+							<div class="col-sm-1"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="submit">Create</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+{% endfor %}
+<div class="modal fade" id="propertyUpdate" tabindex="-1" aria-labelledby="propertyUpdate" aria-hidden="true">
+	<form action="submodels/property" method="post">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" name="submodel" id="submodelPropertyHeader"></h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<input id="submodelNameInnerText" name="submodelName" type="hidden" value="">
+				<input id="submodelPropertyInnerText" name="submodelProperty" type="hidden" value="">
+				<div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<div class="col-3">
+								<label for="newValue_Text" class="form-label">New Value</label>
+							</div>
+							<div class="col-1"></div>
+							<div class="col-7">
+								<input type="text" name="newValue" class="form-control"
+									id="newValue_Text" required>
+							</div>
+							<div class="col-1"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="submit">Update</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+{% endblock %}
+

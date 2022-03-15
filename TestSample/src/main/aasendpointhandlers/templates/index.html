@@ -1,0 +1,309 @@
+{% extends "homelayout.html" %} {% block homecontent %}
+
+<div style = "width: 100%;">
+	<div class = "container">
+		<div class = "row" style = "height : 32vh;">
+			<div class = "col-1"></div>
+			<div class = "col-4" style = "border-radius: 3px; box-shadow:0 17px 50px 0 rgba(0,0,0,.19),0 12px 15px 0 rgba(0,0,0,.24);">
+				<div class = "row" style = "height : 6.5vh; background-color :#00b0f0">
+					<div class = "d-flex justify-content-center align-items-center" style = "font-size: 2.5vh;padding-top: 2.0vh;">
+		    			<p style = "color : white; text-transform: uppercase;">
+		    						Manufacturer Details 
+		    			</p>
+	    			</div>
+				</div>
+				<div>
+					<table class = "table" style = "font-size: 2.2vh; text-align: justify;align-items: center;">
+						<tr>
+							<td>Name</td>
+							<td>{{namePlateData['ManufacturerName']}}</td>
+							<td>
+								<div class="imagecontainer">
+										<input type="image" style="height: 4vh"
+											onclick="modalSubmodelDataModifier('Nameplate','ManufacturerName')"
+											data-bs-toggle="modal" data-bs-target="#propertyUpdate"
+											data-whatever="@mdo" src="http://localhost:9023/images/edit.svg"
+											name="submit">
+									<div class="overlay">
+										<input type="image" style="height: 4vh"
+											onclick="modalSubmodelDataModifier('Nameplate','ManufacturerName')"
+											data-bs-toggle="modal" data-bs-target="#propertyUpdate"
+											data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg"
+											name="submit">
+									</div>
+								</div>
+								</td>
+								</tr>
+								<tr>
+									<td>TypName</td>
+									<td>{{namePlateData['ManufacturerTypName']}}</td>
+									<td>
+										<div class="imagecontainer">
+											<input type="image" style="height: 4vh"
+												onclick="modalSubmodelDataModifier('Nameplate','ManufacturerTypName')"
+												data-bs-toggle="modal" data-bs-target="#propertyUpdate"
+												data-whatever="@mdo" src="http://localhost:9023/images/edit.svg"
+												name="submit">
+											<div class="overlay">
+												<input type="image" style="height: 4vh"
+													onclick="modalSubmodelDataModifier('Nameplate','ManufacturerTypName')"
+													data-bs-toggle="modal" data-bs-target="#propertyUpdate"
+													data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg"
+													name="submit">
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Country Of Origin</td>
+									<td>{{namePlateData['CountryOfOrigin']}}</td>
+									<td>
+										<div class="imagecontainer">
+											<input type="image" style="height: 4vh"
+												onclick="modalSubmodelDataModifier('Nameplate','CountryOfOrigin')"
+												data-bs-toggle="modal" data-bs-target="#propertyUpdate"
+												data-whatever="@mdo" src="http://localhost:9023/images/edit.svg"
+												name="submit">
+											<div class="overlay">
+												<input type="image" style="height: 4vh"
+													onclick="modalSubmodelDataModifier('Nameplate','CountryOfOrigin')"
+													data-bs-toggle="modal" data-bs-target="#propertyUpdate"
+													data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg"
+													name="submit">
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+				</div>		
+			</div>
+			<div class = "col-2"></div>
+			<div class = "col-4" style = "border-radius: 3px; box-shadow:0 17px 50px 0 rgba(0,0,0,.19),0 12px 15px 0 rgba(0,0,0,.24);">
+				<div class = "row" style = "height : 6.5vh; background-color :#00b0f0">
+					<div class = "d-flex justify-content-center align-items-center" style = "font-size: 2.5vh;padding-top: 2.0vh;">
+		    			<p style = "color : white; text-transform: uppercase;">
+		    						MARKING CE
+		    			</p>
+	    			</div>
+	    			<div class = "d-flex justify-content-center align-items-center">
+	    				<img style="height : 25vh" src="http://localhost:9023/images/image1.jpg">
+	    			</div>
+				</div>
+			</div>
+			<div class = "col-1"></div>
+		</div>
+		<div class = "row" style = "height : 5vh;">
+		</div>
+		<div class = "row" style = "height : 40vh;">
+			<div class = "col-1"></div>
+			<div class = "col-4" style = "border-radius: 3px; box-shadow:0 17px 50px 0 rgba(0,0,0,.19),0 12px 15px 0 rgba(0,0,0,.24);">
+				<div class = "row" style = "height : 6.5vh; background-color :#00b0f0">
+					<div class = "d-flex justify-content-center align-items-center" style = "font-size: 2.5vh;padding-top: 2.0vh;">
+		    			<p style = "color : white; text-transform: uppercase;">
+		    						Marking CRUUS
+		    			</p>
+	    			</div>
+	    			<div class = "d-flex justify-content-center align-items-center">
+	    				<img style="height: 30vh;width: 20vw;" src="http://localhost:9023/images/image2.jpg">
+	    			</div>
+				</div>
+			</div>			
+			<div class = "col-2"></div>
+			<div class = "col-4" style = "border-radius: 3px; box-shadow:0 17px 50px 0 rgba(0,0,0,.19),0 12px 15px 0 rgba(0,0,0,.24);">
+				<div class = "row" style = "height : 6.5vh; background-color :#00b0f0">
+					<div class = "d-flex justify-content-center align-items-center" style = "font-size: 2.5vh;padding-top: 2.0vh;">
+		    			<p style = "color : white; text-transform: uppercase;">
+		    						Product Details
+		    			</p>
+	    			</div>
+				</div>
+				<div>
+					<table class = "table" style = "font-size: 2.2vh; text-align: justify;align-items: center;">
+									<tr>
+								      <td>Typ Class</td>
+								      <td>{{namePlateData['TypClass']}}</td>
+								      <td>
+								      	<div class="imagecontainer">
+											<input type="image"  style = "height : 4vh"   onclick = "modalSubmodelDataModifier('Nameplate','TypClass')" data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit.svg" name="submit">
+											<div class="overlay">
+												<input type="image"  style = "height : 4vh"  onclick = "modalSubmodelDataModifier('Nameplate','TypClass')" data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg" name="submit" >
+											</div>
+										</div>
+								    </tr>
+								    <tr>
+								      <td>Serial No</td>
+								      <td>{{namePlateData['SerialNo']}}</td>
+								      <td>
+								      	<div class="imagecontainer">
+											<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','SerialNo')" data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit.svg" name="submit">
+											<div class="overlay">
+												<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','SerialNo')" data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg" name="submit" >
+											</div>
+										</div>								      
+								      </td>									      
+								    </tr>
+								    <tr>
+								      <td>Charge Id</td>
+								      <td>{{namePlateData['ChargeId']}}</td>
+								      <td>
+								      	<div class="imagecontainer">
+											<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','ChargeId')" data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit.svg" name="submit">
+											<div class="overlay">
+												<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','ChargeId')" data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg" name="submit" >
+											</div>
+										</div>								      
+								      </td>										  
+								    </tr>	
+								    <tr>
+								      <td>Year Of Construction</td>
+								      <td>{{namePlateData['YearOfConstruction']}}</td>
+								      <td>
+								      	<div class="imagecontainer">
+											<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','YearOfConstruction')" data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit.svg" name="submit">
+											<div class="overlay">
+												<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','YearOfConstruction')" data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg" name="submit" >
+											</div>
+										</div>								      
+								      </td>										  
+								    </tr>						
+					</table>
+				</div>		
+			</div>			
+			<div class = "col-1"></div>
+		</div>
+		
+		<div class = "row" style = "height : 5vh;">
+		</div>
+
+		<div class = "row" style = "height : 48vh;">
+			<div class = "col-1"></div>
+			<div class = "col-4" style = "border-radius: 3px; box-shadow:0 17px 50px 0 rgba(0,0,0,.19),0 12px 15px 0 rgba(0,0,0,.24);">
+				<div class = "row" style = "height : 6.5vh; background-color :#00b0f0">
+					<div class = "d-flex justify-content-center align-items-center" style = "font-size: 2.5vh;padding-top: 2.0vh;">
+		    			<p style = "color : white; text-transform: uppercase;">
+		    						PHYSICAL ADDRESS
+		    			</p>
+	    			</div>
+				</div>
+				<div>
+					<table class = "table" style = "font-size: 2.2vh; text-align: justify;align-items: center;">
+								   <tr>
+								      <td>Country Code</td>
+								      <td>{{namePlateData['CountryCode']}}</td>
+								      <td>
+								      	<div class="imagecontainer">
+											<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','CountryCode')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit.svg" name="submit">
+											<div class="overlay">
+												<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','CountryCode')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg" name="submit" >
+											</div>
+										</div>								      
+								      </td>									      
+								    </tr>
+								    <tr>
+								      <td>Street</td>
+								      <td>{{namePlateData['Street']}}</td>
+								      <td>
+								      	<div class="imagecontainer">
+											<input type="image"  style = "height : 25px" onclick = "modalSubmodelDataModifier('Nameplate','Street')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit.svg" name="submit">
+											<div class="overlay">
+												<input type="image"  style = "height : 25px" onclick = "modalSubmodelDataModifier('Nameplate','Street')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg" name="submit" >
+											</div>
+										</div>								      
+								      </td>									      								      
+								    </tr>
+								    <tr>
+								      <td>Postal Code</td>
+								      <td>{{namePlateData['PostalCode']}}</td>
+								      <td>
+								      	<div class="imagecontainer">
+											<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','PostalCode')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit.svg" name="submit">
+											<div class="overlay">
+												<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','PostalCode')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg" name="submit" >
+											</div>
+										</div>								      
+								      </td>										  
+								    </tr>	
+								    <tr>
+								      <td>City</td>
+								      <td>{{namePlateData['City']}}</td>
+								      <td>
+								      	<div class="imagecontainer">
+											<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','City')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit.svg" name="submit">
+											<div class="overlay">
+												<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('Nameplate','City')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg" name="submit" >
+											</div>
+										</div>								      
+								      </td>										  
+								    </tr>	
+								    <tr>
+								      <td>State County</td>
+								      <td>{{namePlateData['StateCounty']}}</td>
+								      <td>
+								      	<div class="imagecontainer">
+											<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('StateCounty')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit.svg" name="submit">
+											<div class="overlay">
+												<input type="image"  style = "height : 4vh" onclick = "modalSubmodelDataModifier('StateCounty')"  data-bs-toggle="modal" data-bs-target="#propertyUpdate" data-whatever="@mdo" src="http://localhost:9023/images/edit1.svg" name="submit" >
+											</div>
+										</div>								      
+								      </td>										  
+								    </tr>
+
+					</table>
+				</div>		
+			</div>
+			<div class = "col-2"></div>
+			<div class = "col-4" style = "border-radius: 3px; box-shadow:0 17px 50px 0 rgba(0,0,0,.19),0 12px 15px 0 rgba(0,0,0,.24);">
+				<div class = "row" style = "height : 6.5vh; background-color :#00b0f0">
+					<div class = "d-flex justify-content-center align-items-center" style = "font-size: 2.5vh;padding-top: 2.0vh;">
+		    			<p style = "color : white; text-transform: uppercase;">
+		    						MARKING RCM
+		    			</p>
+	    			</div>
+	    			<div class = "d-flex justify-content-center align-items-center">
+	    				<img style="height: 35vh;width: 25vw;margin-top: 2vh;" src="http://localhost:9023/images/image3.jpg">
+	    			</div>
+				</div>
+			</div>
+			<div class = "col-1"></div>
+		</div>		
+		
+		<div class = "row" style = "min-height : 5vh;">
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="propertyUpdate" tabindex="-1" aria-labelledby="propertyUpdate" aria-hidden="true">
+	<form action="submodels/property" method="post">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" name="submodel" id="submodelPropertyHeader"></h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<input id="submodelNameInnerText" name="submodelName" type="hidden" value="">
+				<input id="submodelPropertyInnerText" name="submodelProperty" type="hidden" value="">
+				<div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<div class="col-3">
+								<label for="newValue_Text" class="form-label">New Value</label>
+							</div>
+							<div class="col-1"></div>
+							<div class="col-7">
+								<input type="text" name="newValue" class="form-control"
+									id="newValue_Text" required>
+							</div>
+							<div class="col-1"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="submit">Update</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+{% endblock %}
